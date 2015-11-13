@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+    <title>Catalog</title>
+</head>
+<body>
+<div class="container" ng-controller="AppCtrl">
+    <h1>Catalog</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Number</th>
+                <th>Action</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" class="form-control" ng-model="catalogItem.name" ></td>
+                <td><input type="text" class="form-control" ng-model="catalogItem.email"></td>
+                <td><input type="text" class="form-control" ng-model="catalogItem.number"></td>
+                <td><button class="btn btn-primary" ng-click="addItem()">Add Item</button></td>
+                <td>
+                    <button class="btn btn-info" ng-click="update()">Update</button>&nbsp;&nbsp;
+                    <button class="btn btn-info" ng-click="deselect()">Clear</button>
+                </td>
+            </tr>
+            <tr ng-repeat="catalogItem in catalog">
+                <td>{{catalogItem.name}}</td>
+                <td>{{catalogItem.email}}</td>
+                <td>{{catalogItem.number}}</td>
+                <td><button class="btn btn-danger" ng-click="remove(catalogItem._id)">Remove</button></td>
+                <td>
+                    <button class="btn btn-warning" ng-click="edit(catalogItem._id)">Edit</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular.min.js"></script>
+<script src="controllers/controller.js"></script>
+</body>
+</html>
